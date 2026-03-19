@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0  
          http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
@@ -16,9 +16,9 @@
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.version>17</java.version> <!-- Укажите вашу версию Java -->
-    	<spring-boot.version>3.1.0</spring-boot.version> <!-- Укажите вашу версию Spring Boot -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourcencoding>
+        <java.version>17</java.version>
+        <spring-boot.version>3.1.0</spring-boot.version>
         
         <spring.version>6.1.14</spring.version>
         <servlet.version>6.0.0</servlet.version>
@@ -30,30 +30,33 @@
         <logback.version>1.4.14</logback.version>
     </properties>
 
-<dependencies>
-    <!-- Spring Boot Starter Web -->
-    <dependency>
+    <parent>
         <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-web</artifactId>
+        <artifactId>spring-boot-starter-parent</artifactId>
         <version>${spring-boot.version}</version>
-    </dependency>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
 
-    <!-- Spring Boot Starter Data JDBC -->
-    <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-data-jdbc</artifactId>
-        <version>${spring-boot.version}</version>
-    </dependency>
+    <dependencies>
+        <!-- Spring Boot Starter Web -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
 
-    <!-- Spring Boot Starter Test -->
-    <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-test</artifactId>
-        <version>${spring-boot.version}</version>
-        <scope>test</scope>
-    </dependency>
-</dependencies>
+        <!-- Spring Boot Starter Data JDBC -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jdbc</artifactId>
+        </dependency>
 
+        <!-- Spring Boot Starter Test -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 
     <build>
         <finalName>my-blog-back-app</finalName>
@@ -71,6 +74,10 @@
                 </configuration>
             </plugin>
             <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.2.2</version>
@@ -78,7 +85,7 @@
             <plugin>
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
-                <version>11.0.24</version>
+                <version>11.0.24</ve	rsion>
                 <configuration>
                     <httpConnector>
                         <port>8080</port>
